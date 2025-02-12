@@ -1,5 +1,6 @@
 import React from 'react';
 import './weather.css';
+import Search from './search';
 
 const weatherIcons = {
   Clear: '/assets/clear.png',
