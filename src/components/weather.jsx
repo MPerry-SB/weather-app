@@ -2,6 +2,7 @@ import React from 'react';
 import './weather.css';
 import Search from './search';
 import Humidity from './humdity';
+import WindSpeed from './windspeed';
 
 const weatherIcons = {
   Clear: '/assets/clear.png',
@@ -26,11 +27,7 @@ export const Weather = ({ currentWeather }) => {
             <Humidity/>
           </div>
           <div className='col'>
-            <div>
-              <img src={'/assets/wind.png'} alt='wind icon' data-testid="current-wind"/>
-              <p>Wind Speed</p>
-              <p>50 kmh</p>
-            </div>
+            <WindSpeed/>
           </div>
         </div>
       </div>
