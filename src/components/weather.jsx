@@ -3,6 +3,7 @@ import './weather.css';
 import Search from './search';
 import Humidity from './humdity';
 import WindSpeed from './windspeed';
+import CurrentWeather from './currentweather';
 
 const weatherIcons = {
   Clear: '/assets/clear.png',
@@ -20,8 +21,7 @@ export const Weather = ({ currentWeather }) => {
       <div className='weather-container'>
         <Search/>
         <img src={getWeatherIcon(currentWeather)} alt='weather icon' data-testid="current-weather"/>
-        <p className='temperature'>20°C</p>
-        <p className='city'>London</p>
+        <CurrentWeather/>
         <div className='weather-data'>
           <div className='col'>
             <Humidity/>
