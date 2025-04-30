@@ -58,7 +58,6 @@ describe('Weather App', () => {
     });
   });
 
-  // Section: Accessibility
   describe('Accessibility', () => {
     test('renders accessible elements', () => {
       render(<Weather />);
@@ -129,6 +128,39 @@ describe('Weather App', () => {
       fireEvent.click(button);
 
       expect(mockOnSearch).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('Background Color Change', () => {
+    test('it changes the background color based on the time of day', async () => {
+      fetch.mockResolvedValueOnce({
+        ok: true,
+        json: async () => ({
+          main: { temp: 293.15, humidity: 50 },
+          name: 'Paris',
+          weather: [{ icon: '01d' }],
+          wind: { speed: 5 },
+          dt: 1681656000,
+          timezone: 3600,
+        }),
+      });
+
+      render(<Weather />);
+
+      const weatherApp = await screen.findByRole('main');
+      expect(weatherApp).toHaveStyle('background-color: #009EF3');
+    });
+  });
+
+  describe('Map Functionality', () => {
+    test('renders the map component with a marker', () => {
+      render(<Weather />);
+
+      const mapContainer = document.querySelector('.map-container');
+      expect(mapContainer).toBeInTheDocument();
+
+      const marker = document.querySelector('.leaflet-marker-icon');
+      expect(marker).toBeInTheDocument();
     });
   });
 });
